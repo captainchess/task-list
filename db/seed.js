@@ -10,4 +10,5 @@ console.log("🌱 Database seeded.");
 
 async function seed() {
   // TODO
+
 }
