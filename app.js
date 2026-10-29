@@ -2,7 +2,13 @@ import express from "express";
 const app = express();
 export default app;
 
+import morgan from "morgan";
 import usersRouter from "#api/users";
+
+// Logging Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
 
 // Router Middleware
 app.use("/users", usersRouter);

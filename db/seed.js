@@ -16,6 +16,6 @@ async function seed() {
 
   // Seed 3 tasks
   for (let i = 1; i <=3; i++) {
-    await createTask("Task " + i, (i % 2), 1 + (i % 2));
+    await createTask("Task " + i, (i % 2), 1);
   }
 }
