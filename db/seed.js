@@ -14,5 +14,8 @@ async function seed() {
   // Seed one user
   await createUser("JohnnyBoi", "password");
 
-  
+  // Seed 3 tasks
+  for (let i = 1; i <=3; i++) {
+    await createTask();
+  }
 }
