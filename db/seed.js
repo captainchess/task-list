@@ -11,4 +11,8 @@ console.log("🌱 Database seeded.");
 async function seed() {
   // TODO
 
+  // Seed one user
+  await createUser("JohnnyBoi", "password");
+
+  
 }
