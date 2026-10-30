@@ -4,7 +4,7 @@ export default router;
 
 import requireUser from "#middleware/requireUser";
 import requireBody from "#middleware/requireBody";
-import { createTask, getTasksByUserId, updateTask, getTaskById } from "#db/queries/tasks";
+import { createTask, getTasksByUserId, updateTask, getTaskById, deleteTask } from "#db/queries/tasks";
 
 router.use(requireUser);
 
@@ -42,4 +42,7 @@ router.put("/:id", requireBody(["done", "title"]), async (req, res) => {
     res.send(task);
 });
 
-
+router.delete("/:id", async (req, res) => {
+    await deleteTask(req.task.id);
+    res.status(204).send("Task Deleted");
+})

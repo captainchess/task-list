@@ -48,3 +48,13 @@ export async function updateTask(title, done, id) {
   } = await db.query(sql, [title, done, id]);
   return task;
 }
+
+export async function deleteTask(id) {
+    const sql = `
+        DELETE from tasks
+        WHERE id = $1
+        RETURNING *
+    `;
+    const {rows: [task]} = await db.query(sql, [id]);
+    return task;
+}
