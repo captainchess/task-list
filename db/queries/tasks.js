@@ -15,16 +15,35 @@ export async function createTask(title, done, userId) {
   return task;
 }
 
-export async function getTasksById(userId) {
-    const sql = `
+export async function getTasksByUserId(userId) {
+  const sql = `
         SELECT * 
         FROM tasks
         WHERE user_id = $1
     `;
-    const {rows: tasks} = await db.query(sql, [userId]);
-    return tasks;
+  const { rows: tasks } = await db.query(sql, [userId]);
+  return tasks;
 }
 
-export async function updateTask(userId) {
+export async function getTaskById(id) {
+    const sql = `
+        SELECT * 
+        FROM tasks
+        WHERE id = $1
+    `;
+  const { rows: [task] } = await db.query(sql, [id]);
+  return task;
+}
 
+export async function updateTask(title, done, id) {
+  const sql = `
+        UPDATE tasks
+        SET title = $1,
+            done = $2
+        WHERE id = $3
+    `;
+  const {
+    rows: [task],
+  } = await db.query(sql, [title, done, id]);
+  return task;
 }
