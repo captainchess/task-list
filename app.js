@@ -4,6 +4,7 @@ export default app;
 
 import morgan from "morgan";
 import usersRouter from "#api/users";
+import tasksRouter from "#api/tasks";
 
 // Logging Middleware
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use(morgan("dev"));
 
 // Router Middleware
 app.use("/users", usersRouter);
+app.use("/tasks", tasksRouter);
 
 app.use((err, req, res, next) => {
   switch (err.code) {
