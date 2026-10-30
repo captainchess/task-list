@@ -14,3 +14,17 @@ export async function createTask(title, done, userId) {
   } = await db.query(sql, [title, done, userId]);
   return task;
 }
+
+export async function getTasksById(userId) {
+    const sql = `
+        SELECT * 
+        FROM tasks
+        WHERE user_id = $1
+    `;
+    const {rows: tasks} = await db.query(sql, [userId]);
+    return tasks;
+}
+
+export async function updateTask(userId) {
+
+}
