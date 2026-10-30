@@ -41,6 +41,7 @@ export async function updateTask(title, done, id) {
         SET title = $1,
             done = $2
         WHERE id = $3
+        RETURNING *
     `;
   const {
     rows: [task],

@@ -36,8 +36,10 @@ router.param("id", async (req, res, next, id) => {
   next();
 });
 
-router.put("/:id", requireBody(["title", "done"]), async (req, res) => {
+router.put("/:id", requireBody(["done", "title"]), async (req, res) => {
     const {title, done} = req.body;
     const task = await updateTask(title, done, req.task.id);
-    return res.send(task);
+    res.send(task);
 });
+
+
